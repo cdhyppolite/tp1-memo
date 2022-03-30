@@ -7,7 +7,7 @@ export default function Utilisateur({utilisateur}) {
   return (
     <div className="Utilisateur">
       <span className="nom">{utilisateur.displayName}</span>
-      <Avatar className="avatar" alt="Le même Monsieur Untel" title={utilisateur.email}  src={utilisateur.photoURL}/>
+      <Avatar className="avatar" alt={"Le même "+utilisateur.displayName} title={utilisateur.email}  src={utilisateur.photoURL}/>
       
       <Button 
         variant="outlined"
