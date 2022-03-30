@@ -4,14 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
-// Initialiser Firebase
+/*********** Initialiser Firebase */
 export const instanceFirebase = initializeApp(firebaseConfig);
 
-// Initialiser Firebase Authentification
+/*********** Initialiser Firebase Authentification */
 export const authFirebase = getAuth(instanceFirebase);
 
-// Initialiser l'authentification fédérée Google
+/*********** Initialiser l'authentification fédérée Google */
 export const authGoogle = new GoogleAuthProvider();
 
-// Initialiser Firestore
+/*********** Initialiser Firestore */
 export const bdFirestore = getFirestore();

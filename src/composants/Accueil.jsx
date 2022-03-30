@@ -1,16 +1,9 @@
 import './Accueil.scss';
 import logoGoogle from '../images/google-logo.png';
+import { connexion } from '../code/utilisateur-modele';
+
 
 export default function Accueil() {
-  
-  // Déclenche le processus d'authentification avec Google Auth Provider
-   function connexion() {
-    alert('À compléter !');
-    signInWithPopup(authFirebase, authGoogle).then(
-      userGoogle => setUtil(userGoogle.user)
-    );
-  }
-
   return (
     <div className="Accueil">
       <h3 className="logo">Memo</h3>
