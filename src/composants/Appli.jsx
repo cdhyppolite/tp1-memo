@@ -11,6 +11,12 @@ export default function Appli() {
   // État 'utilisateur'
   const [utilisateur, setUtilisateur] = useState(null);
 
+  // État des 'dossiers' de l'utilisateur connecté
+  const [taches, setTaches] = useState([]);
+
+  // Formulaire
+  const [ouvert, setOuvert] = useState([]);
+
   // Maintenir la connexion
   useEffect(() => observerEtatConnexion(setUtilisateur),[]);
 
@@ -22,7 +28,7 @@ export default function Appli() {
           <img src={logo} className="appli-logo" alt="Memo" />
           <Utilisateur  utilisateur={utilisateur}/>
         </header>
-        <Taches />
+        <Taches utilisateur={utilisateur} taches={taches} setTaches={setTaches}/>
         <Controle />
       </div>
       :

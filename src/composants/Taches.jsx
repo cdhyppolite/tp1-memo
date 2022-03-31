@@ -1,7 +1,17 @@
-import Tache from './Tache';
 import './Taches.scss';
+import Tache from './Tache';
+import { useEffect } from 'react';
+import * as tacheModele from '../code/tache-modele';
 
-export default function Taches() {
+export default function Taches({utilisateur, taches, setTaches}) {
+
+  // Lire les tâches (de l'utilisateur connecté) dans Firestore
+  useEffect(
+    () => tacheModele.lireTout(utilisateur.uid).then(
+      lestaches => setTaches(lestaches)
+    )
+    , [utilisateur, setTaches]
+  );
 
   return (
     <section className="Taches">
@@ -13,10 +23,16 @@ export default function Taches() {
           autoComplete="off" 
         />
       </form>
+
       <div className="liste-taches">
-        <Tache />
-        <Tache />
-        <Tache />
+      {
+        taches.map(
+          // tache =>  <Tache key={tache.id} {...tache} />
+          tache =>  <Tache {...tache} />
+        )
+      }
+        <Tache nom={"nom1"} date={"date1"}/>
+        <Tache nom={"nom2"} date={"date2"}/>
       </div>
     </section>
   );
