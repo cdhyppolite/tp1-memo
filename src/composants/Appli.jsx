@@ -14,8 +14,15 @@ export default function Appli() {
   // État des 'dossiers' de l'utilisateur connecté
   const [taches, setTaches] = useState([]);
 
-  // Formulaire
-  const [ouvert, setOuvert] = useState([]);
+  // Fonctions d'ajout de tâches
+  function gererAjoutTaches(nom, fini) {
+    tacheModele.creer(utilisateur.uid, {
+      nom,
+      fini
+    }).then(
+      doc => setTaches([{id: doc.id, ...doc.data()}, ...taches])
+    )
+  }
 
   // Maintenir la connexion
   useEffect(() => observerEtatConnexion(setUtilisateur),[]);
@@ -28,8 +35,8 @@ export default function Appli() {
           <img src={logo} className="appli-logo" alt="Memo" />
           <Utilisateur  utilisateur={utilisateur}/>
         </header>
-        <Taches utilisateur={utilisateur} taches={taches} setTaches={setTaches}/>
-        <Controle />
+        <Taches utilisateur={utilisateur} taches={taches} setTaches={setTaches} gererAjoutTaches={gererAjoutTaches}/>
+        <Controle utilisateur={utilisateur}/>
       </div>
       :
     // 2) Par contre si aucun utilisateur n'est connecté, on affiche plutôt le composant suivant : 
