@@ -27,12 +27,9 @@ export default function Taches({utilisateur, taches, setTaches}) {
       <div className="liste-taches">
       {
         taches.map(
-          // tache =>  <Tache key={tache.id} {...tache} />
-          tache =>  <Tache {...tache} />
+          tache =>  <Tache key={tache.id} {...tache} />
         )
       }
-        <Tache nom={"nom1"} date={"date1"}/>
-        <Tache nom={"nom2"} date={"date2"}/>
       </div>
     </section>
   );

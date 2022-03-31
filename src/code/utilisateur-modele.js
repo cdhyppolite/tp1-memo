@@ -1,4 +1,4 @@
-import { authFirebase, authGoogle, bdFirestore } from './init';
+import { authFirebase, authGoogle, bdFirestore, nomAppli } from './init';
 import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -9,10 +9,10 @@ import { doc, setDoc } from 'firebase/firestore';
  *                                           l'état 'utilisateur'
  */
 export function observerEtatConnexion(mutateurEtatUtilisateur) {
-    onAuthStateChanged(authFirebase, 
+    onAuthStateChanged(authFirebase,
         util => {
             // S'il y a un utilisateur autre que 'null', on sauvegarde dans Firestore
-            if(util) {
+            if (util) {
                 // La fonction sauvegarderProfil() est définie plus bas.
                 sauvegarderProfil(util);
             }
@@ -50,8 +50,6 @@ function sauvegarderProfil(util) {
     // Voir la documentation : 
     // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=0
     setDoc(
-        doc(bdFirestore, 'signets', util.uid), 
-        {nom: util.displayName, courriel: util.email}, 
-        {merge: true}
+        doc(bdFirestore, nomAppli, util.uid), { nom: util.displayName, courriel: util.email }, { merge: true }
     );
 }

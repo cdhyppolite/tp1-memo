@@ -2,6 +2,7 @@
 
 # Ne pas 'tarcker' le fichier de config de Firebase
 /src/code/config.js
+tp1/*
 
 # dependencies
 /node_modules

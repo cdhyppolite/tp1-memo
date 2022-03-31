@@ -15,3 +15,6 @@ export const authGoogle = new GoogleAuthProvider();
 
 /*********** Initialiser Firestore */
 export const bdFirestore = getFirestore();
+
+/*********** Nom de l'appli */
+export const nomAppli = "memo";
