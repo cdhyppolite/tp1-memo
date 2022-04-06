@@ -1,3 +1,5 @@
 # TP #1 : Application Memo
 
-Code de départ de l'application Memo à utiliser pour le TP #1 du cours 582-4PA.
+Travail Pratique #1 du cours 582-4PA.
+Fait par: Carl-David Hyppolite
+Remise: Dimanche 10 Avril 2022
