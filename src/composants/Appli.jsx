@@ -12,7 +12,7 @@ export default function Appli() {
   // État 'utilisateur'
   const [utilisateur, setUtilisateur] = useState(null);
 
-  // État des 'dossiers' de l'utilisateur connecté
+  // État des 'taches' de l'utilisateur connecté
   const [taches, setTaches] = useState([]);
 
   // Fonctions d'ajout de tâches
