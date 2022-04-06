@@ -18,8 +18,11 @@ export default function Appli() {
   // Fonctions d'ajout de tâches
   function gererAjoutTaches(tache) {
     tacheModele.creerTache(utilisateur.uid, tache).then(
-      doc => {setTaches([{id: doc.id, ...doc.data()}, ...taches]);})
-      ;
+        doc => {
+                  console.log('Document retourné par ajoutTache : ', doc);
+                  setTaches([{id: doc.id, ...doc.data()}, ...taches]);
+              }
+      )
   }
 
   // Maintenir la connexion

@@ -9,7 +9,8 @@ export default function Taches({utilisateur, taches, setTaches, gererAjoutTaches
   const [nom, setNom] = useState('');
   const [fini, setFini] = useState('');
 
-  function gererSoumettre(idUtilisateur, event) {
+  function gererSoumettre(event) {
+    
     event.preventDefault(); //Ne pas actualiser la page
     const tache = {nom: event.target[0].value};
 
@@ -33,7 +34,7 @@ export default function Taches({utilisateur, taches, setTaches, gererAjoutTaches
     <section className="Taches">
 
       {/* Tâche à ajouter */}
-      <form onSubmit={e => gererSoumettre(utilisateur.uid, e)}>
+      <form onSubmit={e => gererSoumettre(e)}>
         <input 
           type="text"   
           placeholder="Ajoutez une tâche ..." 

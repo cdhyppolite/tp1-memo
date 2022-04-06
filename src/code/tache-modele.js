@@ -16,7 +16,7 @@ export async function creerTache(idUtilisateur, tache) {
     tache.date = Timestamp.now();
     tache.fini = false;
     let coll = collection(bdFirestore, nomAppli, idUtilisateur, 'taches');
-    let refDoc = addDoc(coll, tache, { merge: true });
+    let refDoc = await addDoc(coll, tache, { merge: true });
     return await getDoc(refDoc);
 }
 
@@ -27,5 +27,5 @@ export function convertirDate(dateEnTimestamp) {
     const listeDesMois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
     const mois = listeDesMois[parseInt(date.substring(3, 5)) - 1];
     const annee = date.substring(6, 10);
-    return `${jour} ${mois} ${annee} à ${date.substring(12, 20)}`;
+    return `(${jour} ${mois} ${annee} à ${date.substring(12, 20)})`;
 }
