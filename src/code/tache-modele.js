@@ -27,7 +27,7 @@ export function convertirDate(dateEnTimestamp) {
     const listeDesMois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
     const mois = listeDesMois[date.getMonth()];
     const jour = date.getDate();
-    return `(${jour} ${mois} ${annee} à ${heureDeuxChiffre( date.getHours(),date.getMinutes(), date.getSeconds() )})`;
+    return `(${(jour < 10 ? '0' : '') + jour} ${mois} ${annee} à ${heureDeuxChiffre( date.getHours(),date.getMinutes(), date.getSeconds() )})`;
 }
 
 function heureDeuxChiffre(heures, minutes, secondes) {
