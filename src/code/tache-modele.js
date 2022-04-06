@@ -17,3 +17,12 @@ export async function creer(idUtilisateur, tache) {
     let refDoc = addDoc(coll, tache);
     return await getDoc(refDoc);
 }
+
+export function convertirDate(dateEnTimestamp) {
+    const date = new Date(dateEnTimestamp * 1000).toLocaleString();
+    const jour = date.substring(0, 2);
+    const listeDesMois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+    const mois = listeDesMois[parseInt(date.substring(3, 5)) - 1];
+    const annee = date.substring(6, 10);
+    return `${jour} ${mois} ${annee} à ${date.substring(12, 20)}`;
+}
