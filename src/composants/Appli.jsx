@@ -16,13 +16,10 @@ export default function Appli() {
   const [taches, setTaches] = useState([]);
 
   // Fonctions d'ajout de tâches
-  function gererAjoutTaches(nom, fini) {
-    tacheModele.creerTache(utilisateur.uid, {
-      nom,
-      fini
-    }).then(
-      doc => setTaches([{id: doc.id, ...doc.data()}, ...taches])
-    )
+  function gererAjoutTaches(tache) {
+    tacheModele.creerTache(utilisateur.uid, tache).then(
+      doc => {setTaches([{id: doc.id, ...doc.data()}, ...taches]);})
+      ;
   }
 
   // Maintenir la connexion
