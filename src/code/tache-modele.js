@@ -11,13 +11,16 @@ export async function lireTout(idUtilisateur) {
     );
 }
 
-export async function creer(idUtilisateur, tache) {
+// Ajouter une tâche
+export async function creerTache(idUtilisateur, tache) {
     tache.date = Timestamp.now();
+    tache.fini = false;
     let coll = collection(bdFirestore, nomAppli, idUtilisateur, 'taches');
-    let refDoc = addDoc(coll, tache);
+    let refDoc = addDoc(coll, tache, { merge: true });
     return await getDoc(refDoc);
 }
 
+//  Convertir la date
 export function convertirDate(dateEnTimestamp) {
     const date = new Date(dateEnTimestamp * 1000).toLocaleString();
     const jour = date.substring(0, 2);

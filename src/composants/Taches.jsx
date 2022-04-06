@@ -9,10 +9,15 @@ export default function Taches({utilisateur, taches, setTaches, gererAjoutTaches
   const [nom, setNom] = useState('');
   const [fini, setFini] = useState('');
 
-  function gererSoumettre() {
-    // Ajout dans firestore
-    // alert(value);
-    // gererAjoutTaches( nom, fini);
+  function gererSoumettre(idUtilisateur, event) {
+    event.preventDefault();
+    const tache = {nom: event.target[0].value};
+    // Vider le contenu de la barre écrit la prochine tâche
+    event.target[0].value = '';
+
+    tacheModele.creerTache(idUtilisateur, tache).then(
+      doc => {setTaches([{id: doc.id, ...doc.data()}, ...taches]);})
+      ;
   }
 
   // Lire les tâches (de l'utilisateur connecté) dans Firestore
@@ -25,7 +30,9 @@ export default function Taches({utilisateur, taches, setTaches, gererAjoutTaches
 
   return (
     <section className="Taches">
-      <form onSubmit={gererSoumettre}>
+
+      {/* Tâche à ajouter */}
+      <form onSubmit={e => gererSoumettre(utilisateur.uid, e)}>
         <input 
           type="text"   
           placeholder="Ajoutez une tâche ..." 
@@ -34,6 +41,7 @@ export default function Taches({utilisateur, taches, setTaches, gererAjoutTaches
         />
       </form>
 
+      {/* Les Tâches */}
       <div className="liste-taches">
       {
         taches.map(

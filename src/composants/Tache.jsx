@@ -5,8 +5,7 @@ import { convertirDate } from '../code/tache-modele';
 
 export default function Tache({id, nom, date, fini}) {
   let etat = "Tache";
-  console.log(date);
-  if (fini==true) etat = "Tache completee";
+  if (fini==true) etat += " completee";
   return (
     <div className={etat}>
       <CheckCircleIcon/>

@@ -6,6 +6,7 @@ import Accueil from './Accueil';
 import Utilisateur from './Utilisateur';
 import { useState, useEffect } from 'react';
 import { observerEtatConnexion } from '../code/utilisateur-modele';
+import * as tacheModele from '../code/tache-modele';
 
 export default function Appli() {
   // État 'utilisateur'
@@ -16,7 +17,7 @@ export default function Appli() {
 
   // Fonctions d'ajout de tâches
   function gererAjoutTaches(nom, fini) {
-    tacheModele.creer(utilisateur.uid, {
+    tacheModele.creerTache(utilisateur.uid, {
       nom,
       fini
     }).then(
